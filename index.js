@@ -1,9 +1,10 @@
  
 
-  import { readdir } from 'node:fs/promises';
- 
+import { readdir } from 'node:fs/promises';
+import sharp from 'sharp';
+
 /*
-const sharp = require('sharp')
+ 
  
 console.log('Resizing')
  
@@ -15,18 +16,23 @@ sharp('alps.jpg')
 */
  
 try {
-  const photoRoot = await readdir('photos');
-  for (const photoDirName of photoRoot){
-    console.log(photoDirName);
+  const photoRoot = await readdir('photos' , {withFileTypes: true});
+  for (const photoDirent of photoRoot){
+    console.log(photoDirent.name);
     if(!photoDirent.isDirectory()){
       continue
     }
     // Jednotliva galerie
-    const photoDir = await readdir(`photos/${photoDirName}`)
+    const photoDir = await readdir(`photos/${photoDirent.name}`)
  
       for (const photoName of photoDir){
         if(photoName.toLowerCase().endsWith('.jpg')){
-          console.log(` photos/${photoDirName}/${photoName}`)
+          console.log(` photos/${photoDirent.name}/${photoName}`, photoName)
+          sharp( `photos/${photoDirent.name}/${photoName}`)
+            .resize(1200, 1200)
+            .rotate(10, {background: "#ff0000"})
+            .toFile('output.jpg', function(err) {
+            });
         }
       }
  
