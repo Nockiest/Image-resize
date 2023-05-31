@@ -1,0 +1,24 @@
+{
+  "name": "node-js-images-projekt",
+  "version": "1.0.0",
+  "description": "Image projekt for resizing images",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xyz"
+  },
+  "keywords": [
+    "image"
+  ],
+  "author": "Andrew",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.32.1"
+  },
+  "type": "module" 
+
+
+}
