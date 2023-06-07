@@ -2,8 +2,28 @@ import { readdir } from 'node:fs/promises';
 import sharp from 'sharp';
 import path from 'path';
 
-const gallery = document.getElementById("gallery")
-console.log(gallery)
+const fs = require('fs');
+
+const content = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Web Page</title>
+  </head>
+  <body>
+    <h1>Welcome to my website!</h1>
+    <p>This is the content of my web page.</p>
+  </body>
+</html>
+`;
+
+fs.writeFile('index.html', content, (err) => {
+  if (err) {
+    console.error('Error creating index.html:', err);
+  } else {
+    console.log('index.html created successfully.');
+  }
+});
 
 async function createResizedImage(newSize, imagePath, imageName, endPointFolder, imageSuffix = "altered") {
   const newImageName = `${imageName}_${imageSuffix}.jpg`;
