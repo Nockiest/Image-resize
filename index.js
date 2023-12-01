@@ -89,7 +89,7 @@ async function updateIndexHtml() {
 processPhotos();
 
  
-
+ 
  // console.log(` photos/${photoDirent.name}/${photoName}`, photoName)
           // sharp( `photos/${photoDirent.name}/${photoName}`)
           //   .resize(1200, 1200)
